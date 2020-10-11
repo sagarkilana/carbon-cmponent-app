@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,24 +18,24 @@ import {
 	TableModule,
 
 	TabsModule,
-	GridModule ,
+	GridModule,
 	ContentSwitcherModule,
-	TilesModule ,
-	ButtonModule ,
-	RadioModule ,
-	InputModule ,
-	SelectModule ,
-	NumberModule ,
-	CheckboxModule ,
+	TilesModule,
+	ButtonModule,
+	RadioModule,
+	InputModule,
+	SelectModule,
+	NumberModule,
+	CheckboxModule,
 	PaginationModule,
-	 ModalModule,
-	
+	ModalModule,
+
 } from 'carbon-components-angular';
 
 @NgModule({
-	
+
 	declarations: [
-		
+
 		AppComponent,
 		HeaderComponent,
 		CatalogComponent,
@@ -54,21 +54,21 @@ import {
 		TabsModule,
 		GridModule,
 		ContentSwitcherModule,
-		SelectModule ,
-		TilesModule ,
-		ButtonModule ,
-		InputModule ,
-		RadioModule ,
-		NumberModule ,
+		SelectModule,
+		TilesModule,
+		ButtonModule,
+		InputModule,
+		RadioModule,
+		NumberModule,
 		ReactiveFormsModule,
-		CheckboxModule ,
+		CheckboxModule,
 		PaginationModule,
 		ModalModule
 	],
-	exports:[
-		 
+	exports: [
+
 	],
-	providers:[
+	providers: [
 	],
 
 	bootstrap: [AppComponent]

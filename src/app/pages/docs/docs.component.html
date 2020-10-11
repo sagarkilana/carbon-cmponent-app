@@ -1,53 +1,53 @@
 <ibm-table-container>
-    <div class="starter-home" ibmGrid >
-            <div ibmCol [columnNumbers]="{'lg':12, 'md': 12, 'sm': 12}">
-        <p class="subtitle p2">Orders</p>
-                <table ibmTable [sortable]="false">
-                    <thead ibmTableHead>
-                        <tr>
-                            <th>
-                                Breakfast
-                            </th>
-                            <th>
-                                Lunch
-                            </th>
-                            <th>
-                                Dinner
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody ibmTableBody *ngIf='totalOrders.length>0'>
-                        <tr *ngFor="let row of totalOrders" [hidden]=''>
-                            <td>
-                                {{row.breakFast.item}}
-                            </td>
-                            <td>
-                                {{row.lunch.item}}
-                            </td>
-                            <td>
-                                {{row.dinner.item}}
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tbody *ngIf='totalOrders.length==0'>
-                        <tr>
-                            <td class="no-data" colspan="3">
-                                <div>No toppings.</div>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tfoot  >
-                        <tr>
-                            <td colspan="3">
-                        <ibm-pagination [model]="model" (selectPage)="selectPage($event)">
-                        </ibm-pagination>
-                    </td>
-                </tr>
-                    </tfoot>
-                        
-                </table>
-            </div>
+    <div class="starter-home" ibmGrid>
+        <div ibmCol [columnNumbers]="{'lg':12, 'md': 12, 'sm': 12}">
+            <p class="subtitle p2">Orders</p>
+            <table ibmTable [sortable]="false">
+                <thead ibmTableHead>
+                    <tr>
+                        <th>
+                            Breakfast
+                        </th>
+                        <th>
+                            Lunch
+                        </th>
+                        <th>
+                            Dinner
+                        </th>
+                    </tr>
+                </thead>
+                <tbody ibmTableBody *ngIf='totalOrders.length>0'>
+                    <tr *ngFor="let row of totalOrders" [hidden]=''>
+                        <td>
+                            {{row.breakFast.item}}
+                        </td>
+                        <td>
+                            {{row.lunch.item}}
+                        </td>
+                        <td>
+                            {{row.dinner.item}}
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf='totalOrders.length==0'>
+                    <tr>
+                        <td class="no-data" colspan="3">
+                            <div>No toppings.</div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">
+                            <ibm-pagination [model]="model" (selectPage)="selectPage($event)">
+                            </ibm-pagination>
+                        </td>
+                    </tr>
+                </tfoot>
+
+            </table>
+        </div>
     </div>
-  
- 
+
+
 </ibm-table-container>

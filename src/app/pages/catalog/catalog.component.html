@@ -1,22 +1,22 @@
 <div>
-        <div class="starter-home p">
-            <div class="body-text hotel-background" ibmRow rowspan='3' >
-                <div ibmCol [columnNumbers]="{'lg': 12, 'md': 12, 'sm': 12}">
-                    <h1 class="title">Hotel ABC</h1>
-                </div>
-            </div>
-            <div class="body-text pt1 pb1 pl2 pr2" ibmRow>
-
-                <div ibmCol  class="pt1 pb1" [columnNumbers]="{'lg': 6, 'md': 6, 'sm': 12}">
-                    <p> Fields marked in * are Mandatory</p>
-                </div>
-                <div ibmCol [columnNumbers]="{'lg': 6, 'md': 6, 'sm': 12}" class='text-right'>
-                    <button [ibmButton]="'secondary'" [size]="sm">Edit</button>
-                    &nbsp;
-                    <button [ibmButton]="'primary'" (click)='saveData()' [size]="sm" [disabled]="false">Save</button>
-                </div>
+    <div class="starter-home p">
+        <div class="body-text hotel-background" ibmRow rowspan='3'>
+            <div ibmCol [columnNumbers]="{'lg': 12, 'md': 12, 'sm': 12}">
+                <h1 class="title">Hotel ABC</h1>
             </div>
         </div>
+        <div class="body-text pt1 pb1 pl2 pr2" ibmRow>
+
+            <div ibmCol class="pt1 pb1" [columnNumbers]="{'lg': 6, 'md': 6, 'sm': 12}">
+                <p> Fields marked in * are Mandatory</p>
+            </div>
+            <div ibmCol [columnNumbers]="{'lg': 6, 'md': 6, 'sm': 12}" class='text-right'>
+                <button [ibmButton]="'secondary'" [size]="sm">Edit</button>
+                &nbsp;
+                <button [ibmButton]="'primary'" (click)='saveData()' [size]="sm" [disabled]="false">Save</button>
+            </div>
+        </div>
+    </div>
     <div class="starter-home">
         <div class="body-text" ibmRow>
             <div ibmCol [columnNumbers]="{'lg': 12, 'md': 12, 'sm': 12}">
@@ -113,7 +113,7 @@
             </div>
         </div>
     </div>
-    <div class="starter-home" ibmGrid  class="pt2" [hidden]='currentTab!="Dinner"'>
+    <div class="starter-home" ibmGrid class="pt2" [hidden]='currentTab!="Dinner"'>
         <p class="subtitle">Dinner</p>
         <div class="body-text" ibmRow>
             <div ibmCol [columnNumbers]="{'lg': 3, 'md': 4, 'sm': 12}">

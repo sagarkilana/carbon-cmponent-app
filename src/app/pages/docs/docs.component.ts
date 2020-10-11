@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input,Inject } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { PaginationModel } from 'carbon-components-angular';
 
 @Component({
@@ -7,41 +7,38 @@ import { PaginationModel } from 'carbon-components-angular';
   styleUrls: ['./docs.component.scss']
 })
 export class DocsComponent implements OnInit {
- 
-  @Input() model = new PaginationModel();
-	@Input() skeleton = false;
-	@Input() disabled = false;
-	@Input() pageInputDisabled = false;
-	@Input() pagesUnknown = false;
 
-	@Input() get totalDataLength() {
-		return this.model.totalDataLength;
+  @Input() model = new PaginationModel();
+  @Input() skeleton = false;
+  @Input() disabled = false;
+  @Input() pageInputDisabled = false;
+  @Input() pagesUnknown = false;
+
+  @Input() get totalDataLength() {
+    return this.model.totalDataLength;
   }
-	set totalDataLength(value) {
-		this.model.totalDataLength = value;
+  set totalDataLength(value) {
+    this.model.totalDataLength = value;
   }
-  totalOrders:any[]=[]
-  
+  totalOrders: any[] = []
+
   constructor() { }
 
-  
+
   selectPage(page) {
-		console.log("Loading page", page, "from pagination model");
-		this.model.currentPage = page;
-	}
+    this.model.currentPage = page;
+  }
 
 
   ngOnInit() {
-    console.log('ngOnInit: ',);
-    if(sessionStorage.getItem('totalOrders')){
-      this.totalOrders=JSON.parse(sessionStorage.getItem('totalOrders'))
-      console.log('this.totalOrders: ', this.totalOrders);
+    if (sessionStorage.getItem('totalOrders')) {
+      this.totalOrders = JSON.parse(sessionStorage.getItem('totalOrders'))
       this.model.pageLength = 10;
       this.model.currentPage = 1;
-         // Set for pagination
-         this.model.pageLength = 10;
-         this.model.totalDataLength = this.totalOrders.length;
-         this.selectPage(1);
+      // Set for pagination
+      this.model.pageLength = 10;
+      this.model.totalDataLength = this.totalOrders.length;
+      this.selectPage(1);
     }
   }
 
