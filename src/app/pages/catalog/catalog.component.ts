@@ -136,6 +136,7 @@ export class CatalogComponent implements OnInit {
   }
 
 
+  //to validate and save data in DB
   saveData() {
     var userInput = {
       breakFast: {},

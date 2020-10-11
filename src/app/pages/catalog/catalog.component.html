@@ -44,7 +44,7 @@
         </div>
         <div class="body-text" ibmRow>
             <div ibmCol [columnNumbers]="{'lg': 4, 'md': 12, 'sm': 12}">
-                <legend class="bx--label">Type</legend>
+                <legend class="bx--label">Type *</legend>
                 <ibm-radio-group aria-label="radiogroup" (change)="onChangeBreakfastStyle($event)">
                     <ibm-radio *ngFor="let radio of breakfastStyle" [value]="radio.value"
                         [checked]="radio.value==breakfasttype">
@@ -70,7 +70,7 @@
             </div>
             <div ibmCol [columnNumbers]="{'lg': 4, 'md': 12, 'sm': 12}">
 
-                <ibm-number [label]="'Quantity'" [min]="1" [max]="100" [invalid]="!bfQuantity && bfFormInvalid"
+                <ibm-number [label]="'Quantity *'" [min]="1" [max]="100" [invalid]="!bfQuantity && bfFormInvalid"
                     [invalidText]="invalidText" [(ngModel)]="bfQuantity" [disabled]="false">
                 </ibm-number>
             </div>
@@ -80,7 +80,7 @@
         <p class="subtitle">Lunch</p>
         <div class="body-text" ibmRow>
             <div ibmCol [columnNumbers]="{'lg': 4, 'md': 12, 'sm': 12}">
-                <legend class="bx--label">Type</legend>
+                <legend class="bx--label">Type *</legend>
                 <ibm-radio-group aria-label="radiogroup" (change)="onChangelunchType($event)">
                     <ibm-radio *ngFor="let radio of lunchtypes" [value]="radio.value"
                         [checked]="radio.value==lunchtype">
@@ -90,7 +90,7 @@
             </div>
             <div ibmCol [columnNumbers]="{'lg': 4, 'md': 12, 'sm': 12}">
                 <ibm-label [invalidText]="'Any customisation'">
-                    Customisation *
+                    Customisation 
                     <input [(ngModel)]='lunchCustomisation' ibmText [placeholder]="'Customisation'">
                 </ibm-label>
 
@@ -99,15 +99,15 @@
         <div class="body-text" ibmRow>
             <div ibmCol [columnNumbers]="{'lg': 4, 'md': 12, 'sm': 12}">
                 <ibm-select [invalid]="!lunchitem && lunchFormInvalid" [invalidText]="invalidText"
-                    [label]="'Select Item'" [(ngModel)]='lunchitem'>
-                    <option value="" selected>Choose an option</option>
+                    [label]="'Select Item *'" [(ngModel)]='lunchitem'>
+                    <option value="" selected>Choose an option </option>
                     <option value="{{item.value}}" *ngFor="let item of lunchitemList">{{item.label}}</option>
                 </ibm-select>
 
             </div>
             <div ibmCol [columnNumbers]="{'lg': 4, 'md': 12, 'sm': 12}">
 
-                <ibm-number [label]="'Quantity'" [min]="1" [max]="100" [invalid]="!lunchQuantity && lunchFormInvalid"
+                <ibm-number [label]="'Quantity *'" [min]="1" [max]="100" [invalid]="!lunchQuantity && lunchFormInvalid"
                     [invalidText]="invalidText" [(ngModel)]="lunchQuantity" [disabled]="false">
                 </ibm-number>
             </div>
