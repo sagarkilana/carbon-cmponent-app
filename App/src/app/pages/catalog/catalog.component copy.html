@@ -1,0 +1,179 @@
+<ibm-tile>
+    <div class="body-text" ibmRow>
+
+    <h1 class="title" >Breakfast</h1>
+    </div>
+    <div class="starter-home" ibmGrid>
+        <div class="body-text" ibmRow>
+            <div ibmCol [columnNumbers]="{'lg': 9, 'md': 6, 'sm': 12}">
+                <p> Fields marked in * are Mandatory</p>
+            </div>
+            <div ibmCol [columnNumbers]="{'lg': 3, 'md': 6, 'sm': 12}">
+                <button [ibmButton]="'secondary'" [size]="sm">Edit</button>
+                &nbsp;
+                <button [ibmButton]="'primary'" (click)='saveData()' [size]="sm" [disabled]="false">Save</button>
+            </div>
+        </div>
+    </div>
+</ibm-tile>
+<ibm-content-switcher (selected)="selected($event)">
+    <button ibmContentOption name="Breakfast">Breakfast</button>
+    <button ibmContentOption name="Lunch">Lunch</button>
+    <button ibmContentOption name="Dinner">Dinner</button>
+</ibm-content-switcher>
+
+
+
+<div class="starter-home" ibmGrid [hidden]='currentTab!="Breakfast"'>
+   
+    <p class="subtitle">Breakfast</p>
+    <div class="body-text" ibmRow>
+        <div ibmCol [columnNumbers]="{'lg': 4, 'md': 12, 'sm': 12}">
+            <legend class="bx--label">Type</legend>
+            <ibm-radio-group aria-label="radiogroup" (change)="onChangeBreakfastStyle($event)">
+                <ibm-radio *ngFor="let radio of breakfastStyle" [value]="radio.value"
+                    [checked]="radio.value==breakfasttype">
+                    {{radio.label}}
+                </ibm-radio>
+            </ibm-radio-group>
+        </div>
+        <div ibmCol [columnNumbers]="{'lg': 4, 'md': 12, 'sm': 12}">
+            <ibm-label [invalidText]="'Any customisation'">
+                Customisation
+                <input [(ngModel)]='bfcustomisation' ibmText [placeholder]="'Customisation'">
+            </ibm-label>
+
+        </div>
+    </div>
+    <div class="body-text" ibmRow>
+        <div ibmCol [columnNumbers]="{'lg': 4, 'md': 12, 'sm': 12}">
+            <ibm-select [invalid]="!breakfastitem && bfFormInvalid" [invalidText]="invalidText"
+                [label]="'Select Item *'" [(ngModel)]='breakfastitem'>
+                <option value="" selected>Choose an option</option>
+                <option value="{{item.value}}" *ngFor="let item of itemList">{{item.label}}</option>
+            </ibm-select>
+        </div>
+        <div ibmCol [columnNumbers]="{'lg': 4, 'md': 12, 'sm': 12}">
+
+            <ibm-number [label]="'Quantity'" [min]="1" [max]="100" [invalid]="!bfQuantity && bfFormInvalid"
+                [invalidText]="invalidText" [(ngModel)]="bfQuantity" [disabled]="false">
+            </ibm-number>
+        </div>
+    </div>
+</div>
+<div class="starter-home" ibmGrid [hidden]='currentTab!="Lunch"'>
+    <p class="subtitle">Lunch</p>
+    <div class="body-text" ibmRow>
+        <div ibmCol [columnNumbers]="{'lg': 4, 'md': 12, 'sm': 12}">
+            <legend class="bx--label">Type</legend>
+            <ibm-radio-group aria-label="radiogroup" (change)="onChangelunchType($event)">
+                <ibm-radio *ngFor="let radio of lunchtypes" [value]="radio.value" [checked]="radio.value==lunchtype">
+                    {{radio.label}}
+                </ibm-radio>
+            </ibm-radio-group>
+        </div>
+        <div ibmCol [columnNumbers]="{'lg': 4, 'md': 12, 'sm': 12}">
+            <ibm-label [invalidText]="'Any customisation'">
+                Customisation *
+                <input [(ngModel)]='lunchCustomisation' ibmText [placeholder]="'Customisation'">
+            </ibm-label>
+
+        </div>
+    </div>
+    <div class="body-text" ibmRow>
+        <div ibmCol [columnNumbers]="{'lg': 4, 'md': 12, 'sm': 12}">
+            <ibm-select [invalid]="!lunchitem && lunchFormInvalid" [invalidText]="invalidText" [label]="'Select Item'"
+                [(ngModel)]='lunchitem'>
+                <option value="" selected>Choose an option</option>
+                <option value="{{item.value}}" *ngFor="let item of lunchitemList">{{item.label}}</option>
+            </ibm-select>
+
+        </div>
+        <div ibmCol [columnNumbers]="{'lg': 4, 'md': 12, 'sm': 12}">
+
+            <ibm-number [label]="'Quantity'" [min]="1" [max]="100" [invalid]="!lunchQuantity && lunchFormInvalid"
+                [invalidText]="invalidText" [(ngModel)]="lunchQuantity" [disabled]="false">
+            </ibm-number>
+        </div>
+    </div>
+</div>
+<div class="starter-home" ibmGrid [hidden]='currentTab!="Dinner"'>
+    <p class="subtitle">Dinner</p>
+    <div class="body-text" ibmRow>
+        <div ibmCol [columnNumbers]="{'lg': 3, 'md': 4, 'sm': 12}">
+            <legend class="bx--label">Slect all the topping to be used in the selected pizza</legend>
+            <ibm-checkbox [checked]="item.checked" (change)="checkBoxselected($event,item.code)"
+                *ngFor="let item of availableToppings">
+                {{item.label}}
+            </ibm-checkbox>
+        </div>
+        <div ibmCol [columnNumbers]="{'lg':9, 'md': 8, 'sm': 12}">
+            <legend class="bx--label">Please enter the details for each topping</legend>
+            <table ibmTable [sortable]="false">
+                <thead ibmTableHead>
+                    <tr>
+                        <th>
+                            Topping
+                        </th>
+                        <th>
+                            Extra Cheese
+                        </th>
+                        <th>
+                            Weight
+                        </th>
+                    </tr>
+                </thead>
+                <tbody ibmTableBody *ngIf='toppingsOpted.length>0'>
+                    <tr *ngFor="let row of toppingsOpted" [hidden]=''>
+                        <td>
+                            {{row.topping}}
+                        </td>
+                        <td>
+                            <ibm-radio-group aria-label="radiogroup" (change)="ontoppingOpted($event,row.topping_code)">
+                                <ibm-radio [checked]="row.extraCheese=='yes'" [value]="'yes'">
+                                    Yes
+                                </ibm-radio>
+                                <ibm-radio [checked]="row.extraCheese=='no'" [value]="'no'">
+                                    No
+                                </ibm-radio>
+                            </ibm-radio-group>
+                        </td>
+                        <td>
+                            <input [(ngModel)]='row.weight' ibmText [invalid]="!row.weight && dinnerFormInvalid">
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf='toppingsOpted.length==0'>
+                    <tr>
+                        <td class="no-data" colspan="3">
+                            <div>No toppings.</div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">
+                            <ibm-pagination [model]="model" (selectPage)="selectPage($event)">
+                            </ibm-pagination>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- <ibm-modal [open]="open"  (overlaySelected)="open = false">
+    <ibm-modal-header (closeSelect)="open = false">
+        <p class="bx--modal-header__heading bx--type-beta">Order Placed!</p>
+    </ibm-modal-header>
+    <div class="bx--modal-content">
+        <p>Hi, Order placed successfully.</p>
+    </div>
+    <ibm-modal-footer>
+        <ng-container>
+            <button ibmButton="primary" (click)="open = false" [attr.modal-primary-focus]="true">
+                Okay
+            </button>
+        </ng-container>
+    </ibm-modal-footer>
+</ibm-modal> -->
